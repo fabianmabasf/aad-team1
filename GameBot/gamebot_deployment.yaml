@@ -47,5 +47,17 @@ spec:
               value: "8080"
             - name: "PICK_STRATEGY"
               value: "RANDOM"
-            # - name: "FF_BETS"
-            #   value: "1"
+            - name: "FF_BETS"
+              value: "1"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3
